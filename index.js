@@ -46,4 +46,4 @@ app.post('/registration', (req, res) => {
 //     res.send(`Ваш email: ${req.params.email} удален из списка рассылки!`)
 // })
 
-app.listen(process.env.PORT, () => console.log(`server listening at http://localhost:${PORT}/registration`))
+app.listen(process.env.PORT, () => console.log(`server listening at http://localhost:${process.env.PORT}/registration`))
