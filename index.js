@@ -13,7 +13,7 @@ app.post('/send', (req, res) => {
     console.log(req.body)
     if(!req.body.name || !req.body.phone) return res.sendStatus(400)   
     const message = {        
-        to: 'ko1p@ya.ru',
+        to: 'vadim1ivanov@yandex.ru',
         subject: 'Новая заявка',
         html: `
         <h2>Новая заявка</h2>
