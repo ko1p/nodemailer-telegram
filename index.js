@@ -20,9 +20,9 @@ app.post('/send', (req, res) => {
         
         <i>Контактная информация клиента:</i>
         <ul>
-            <li>Имя: ${req.body.name}</li>
-            <li>Телефон: ${req.body.phone}</li>
-            <li>email: ${req.body.email}</li>
+            <li><b>Имя:</b> ${req.body.name}</li>
+            <li><b>Телефон:</b> ${req.body.phone}</li>
+            <li><b>email:</b> ${req.body.email}</li>
         </ul>
         `
     }
