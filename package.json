@@ -1,0 +1,23 @@
+{
+  "name": "nodemailer-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ko1p/nodemailer-project.git"
+  },
+  "author": "Anton Belko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ko1p/nodemailer-project/issues"
+  },
+  "homepage": "https://github.com/ko1p/nodemailer-project#readme",
+  "dependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
