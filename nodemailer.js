@@ -18,7 +18,22 @@ const transporter = nodemailer.createTransport(
     }
 )
 
-const mailer = message => {
+const mailer = (req, res) => {
+    const message = {        
+        to: 'vadim1ivanov@yandex.ru',
+        subject: 'Новая заявка',
+        html: `
+        <h2>Новая заявка</h2>
+        
+        <i>Контактная информация клиента:</i>
+        <ul>
+            <li><b>Имя:</b> ${req.body.name}</li>
+            <li><b>Телефон:</b> ${req.body.phone}</li>
+            <li><b>email:</b> ${req.body.email}</li>
+        </ul>
+        `
+    }
+
     transporter.sendMail(message, (err, info) => {
         if(err) return console.log(err)
         console.log('Информация о сообщении: ', info)

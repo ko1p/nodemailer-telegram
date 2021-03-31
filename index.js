@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const mailer = require('./nodemailer')
-const ctrlTelegram = require('./telegramBot');
+const sendTelegramMes = require('./telegramBot');
 
 const app = express()
 
@@ -11,8 +11,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.post('/send', (req, res) => { 
-    console.log(req.body)
-    if(!req.body.name || !req.body.phone) return res.sendStatus(400)   
+    if (!req.body.name || !req.body.phone) {
+        return res.status(400).send('Не переданы обязательные поля')
+    }
+
     const message = {        
         to: 'ko1p@yandex.ru', //vadim1ivanov@yandex.ru
         subject: 'Новая заявка',
@@ -27,8 +29,9 @@ app.post('/send', (req, res) => {
         </ul>
         `
     }
-    mailer(message)
-    ctrlTelegram.sendMsg(req, res, message.to)
+    
+    mailer(req, res)
+    sendTelegramMes(req, res)
 })
 
 app.listen(PORT, () => console.log(`Сервер запустился на ${PORT} порту`))
