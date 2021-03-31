@@ -14,21 +14,6 @@ app.post('/send', (req, res) => {
     if (!req.body.name || !req.body.phone) {
         return res.status(400).send('Не переданы обязательные поля')
     }
-
-    const message = {        
-        to: 'ko1p@yandex.ru', //vadim1ivanov@yandex.ru
-        subject: 'Новая заявка',
-        html: `
-        <h2>Новая заявка</h2>
-        
-        <i>Контактная информация клиента:</i>
-        <ul>
-            <li><b>Имя:</b> ${req.body.name}</li>
-            <li><b>Телефон:</b> ${req.body.phone}</li>
-            <li><b>email:</b> ${req.body.email}</li>
-        </ul>
-        `
-    }
     
     mailer(req, res)
     sendTelegramMes(req, res)

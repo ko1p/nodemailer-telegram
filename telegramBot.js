@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { TELEGRAM_TOKEN, TELEGRAM_CHAT_ID } = process.env;
+const { TELEGRAM_TOKEN, TELEGRAM_CHAT_ID, EMAIL_TO } = process.env;
 const http = require('request')
 
 const sendMsg = (req, res) => {
@@ -30,7 +30,7 @@ const sendMsg = (req, res) => {
         console.log('statusCode:', response && response.statusCode);
         console.log('body:', body);
         if (response.statusCode === 200) {
-            res.status(200).send(`Заявка успешно ушла на почту ${email} и в телеграмм канал "https://t.me/joinchat/7qyONgUwFno2Yjli"`)
+            res.status(200).send(`Заявка успешно ушла на почту ${EMAIL_TO} и в телеграмм канал "https://t.me/joinchat/7qyONgUwFno2Yjli"`)
         }
         if (response.statusCode !== 200) {
             res.status(400).json({ status: 'error', message: 'Произошла ошибка!', response });
