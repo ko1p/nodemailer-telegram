@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const mailer = require('./nodemailer')
+const ctrlTelegram = require('./telegramBot');
 
 const app = express()
 
@@ -13,7 +14,7 @@ app.post('/send', (req, res) => {
     console.log(req.body)
     if(!req.body.name || !req.body.phone) return res.sendStatus(400)   
     const message = {        
-        to: 'vadim1ivanov@yandex.ru',
+        to: 'ko1p@yandex.ru', //vadim1ivanov@yandex.ru
         subject: 'Новая заявка',
         html: `
         <h2>Новая заявка</h2>
@@ -26,9 +27,8 @@ app.post('/send', (req, res) => {
         </ul>
         `
     }
-
-    res.status(200).send(`Заявка успешно ушла на почту ${message.to}`)
     mailer(message)
+    ctrlTelegram.sendMsg(req, res, message.to)
 })
 
 app.listen(PORT, () => console.log(`Сервер запустился на ${PORT} порту`))
