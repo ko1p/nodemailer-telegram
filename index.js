@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const mailer = require('./nodemailer')
-const sendTelegramMes = require('./telegramBot');
+const mailer = require('./messangers/nodemailer')
+const sendTelegramMes = require('./messangers/telegramBot');
 const { messageCreator } = require('./utils/messageCreator')
 const cors = require('cors')
 
@@ -16,7 +16,7 @@ app.use(bodyParser.json())
 
 app.post('/send', (req, res) => {
     const reqBody = req.body
-    reqBody.apiType = 'send' 
+    reqBody.apiType = 'send'
 
     if (!reqBody.name || !reqBody.telephone) {
         return res.status(400).send('Не переданы обязательные поля')
@@ -29,7 +29,7 @@ app.post('/send', (req, res) => {
 
 app.post('/call', (req, res) => {
     const reqBody = req.body
-    reqBody.apiType = 'call' 
+    reqBody.apiType = 'call'
 
     if (!reqBody.name || !reqBody.telephone) {
         return res.status(400).send('Не переданы обязательные поля name или telephone')
