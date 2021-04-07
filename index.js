@@ -3,8 +3,11 @@ const bodyParser = require('body-parser')
 const mailer = require('./nodemailer')
 const sendTelegramMes = require('./telegramBot');
 const { messageCreator } = require('./utils/messageCreator')
+const cors = require('cors')
 
 const app = express()
+
+app.use(cors())
 
 const PORT = process.env.PORT || 80
 
@@ -19,6 +22,7 @@ app.post('/send', (req, res) => {
         return res.status(400).send('Не переданы обязательные поля')
     }
     const message = messageCreator(reqBody)
+
     mailer(message.email)
     sendTelegramMes(req, res, message.telegram)
 })
