@@ -14,6 +14,10 @@ const PORT = process.env.PORT || 80
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+app.get('/', (req, res) => {
+    res.send('Я проснулся')
+})
+
 app.post('/send', (req, res) => {
     const reqBody = req.body
     reqBody.apiType = 'send'
