@@ -10,7 +10,7 @@ const sendMsg = (req, res, message) => {
         console.log('statusCode:', response && response.statusCode);
         console.log('body:', body);
         if (response.statusCode === 200) {
-            res.status(200).send(`Заявка успешно ушла на почту ${EMAIL_TO} и в телеграмм канал "https://t.me/joinchat/7qyONgUwFno2Yjli"`)
+            res.status(200).send('Информация отправлена')
         }
         if (response.statusCode !== 200) {
             res.status(400).json({ status: 'error', message: 'Произошла ошибка!', response });

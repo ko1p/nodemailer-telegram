@@ -15,7 +15,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
-    res.send('Я проснулся')
+    res.send({
+        message: 'Информация получена'
+    })
 })
 
 app.post('/send', (req, res) => {
